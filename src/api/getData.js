@@ -30,3 +30,30 @@ export function getIntensity() {
   });
   return intensityMap;
 }
+
+export function getLikelihood() {
+  const likelihoodMap = new Map();
+
+  likelihoodMap.set("1", []);
+  likelihoodMap.set("2", []);
+  likelihoodMap.set("3", []);
+  likelihoodMap.set("4", []);
+  likelihoodMap.set("5orAbove", []);
+
+  data[0].forEach((element) => {
+    if (element.likelihood !== "") {
+      if (element.likelihood === 1) {
+        likelihoodMap.get("1").push(element);
+      } else if (element.likelihood === 2) {
+        likelihoodMap.get("2").push(element);
+      } else if (element.likelihood === 3) {
+        likelihoodMap.get("3").push(element);
+      } else if (element.likelihood === 4) {
+        likelihoodMap.get("4").push(element);
+      } else {
+        likelihoodMap.get("5orAbove").push(element);
+      }
+    }
+  });
+  return likelihoodMap;
+}
