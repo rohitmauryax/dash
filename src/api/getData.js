@@ -1,4 +1,5 @@
 import { data } from "../data/sampleData";
+import { countries } from "../data/countries";
 
 export function getData() {
   return data;
@@ -86,4 +87,22 @@ export function getRelevance() {
     }
   });
   return relevanceMap;
+}
+
+export function getCountryWiseDistribution() {
+  const countriesMap = getCountriesMap();
+  data[0].forEach((element) => {
+    if (countriesMap.get(element.country.toLocaleLowerCase())) {
+      countriesMap.get(element.country.toLocaleLowerCase()).push(element);
+    }
+  });
+  return countriesMap;
+}
+
+function getCountriesMap() {
+  const countriesMap = new Map();
+  countries.forEach((country) => {
+    countriesMap.set(country.name.toLocaleLowerCase(), []);
+  });
+  return countriesMap;
 }
