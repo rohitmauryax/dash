@@ -6,6 +6,7 @@ import {
   getLikelihood,
   getRegionWiseDistribution,
   getRelevance,
+  getSectorWiseDistribution,
   getTopicWiseDistribution,
 } from "../../api/getData";
 
@@ -17,6 +18,7 @@ const SampleData = () => {
   const countriesMap = getCountryWiseDistribution();
   const topicMap = getTopicWiseDistribution();
   const regionMap = getRegionWiseDistribution();
+  const sectorMap = getSectorWiseDistribution();
   useEffect(() => {
     console.log("Whole data", data[0][0]);
     console.log("Intensity Map", intensityMap);
@@ -25,6 +27,7 @@ const SampleData = () => {
     console.log("Countries Map", countriesMap);
     console.log("Topic map", topicMap);
     console.log("Region map", regionMap);
+    console.log("Sector Map", sectorMap);
   }, [
     data,
     intensityMap,
@@ -33,6 +36,7 @@ const SampleData = () => {
     countriesMap,
     topicMap,
     regionMap,
+    sectorMap,
   ]);
   return (
     <div>

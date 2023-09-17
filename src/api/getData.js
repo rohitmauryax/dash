@@ -123,6 +123,18 @@ export function getRegionWiseDistribution() {
   return regionMap;
 }
 
+export function getSectorWiseDistribution() {
+  const sectorMap = new Map();
+  data[0].forEach((element) => {
+    if (!sectorMap.has(element.sector.toLocaleLowerCase())) {
+      sectorMap.set(element.sector.toLocaleLowerCase(), [element]);
+    } else {
+      sectorMap.get(element.sector.toLocaleLowerCase()).push(element);
+    }
+  });
+  return sectorMap;
+}
+
 function getCountriesMap() {
   const countriesMap = new Map();
   countries.forEach((country) => {
