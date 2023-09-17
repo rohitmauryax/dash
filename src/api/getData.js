@@ -99,6 +99,18 @@ export function getCountryWiseDistribution() {
   return countriesMap;
 }
 
+export function getTopicWiseDistribution() {
+  const topicMap = new Map();
+  data[0].forEach((element) => {
+    if (!topicMap.has(element.topic.toLocaleLowerCase())) {
+      topicMap.set(element.topic.toLocaleLowerCase(), [element]);
+    } else {
+      topicMap.get(element.topic.toLocaleLowerCase()).push(element);
+    }
+  });
+  return topicMap;
+}
+
 function getCountriesMap() {
   const countriesMap = new Map();
   countries.forEach((country) => {
