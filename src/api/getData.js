@@ -111,6 +111,18 @@ export function getTopicWiseDistribution() {
   return topicMap;
 }
 
+export function getRegionWiseDistribution() {
+  const regionMap = new Map();
+  data[0].forEach((element) => {
+    if (!regionMap.has(element.region.toLocaleLowerCase())) {
+      regionMap.set(element.region.toLocaleLowerCase(), [element]);
+    } else {
+      regionMap.get(element.region.toLocaleLowerCase()).push(element);
+    }
+  });
+  return regionMap;
+}
+
 function getCountriesMap() {
   const countriesMap = new Map();
   countries.forEach((country) => {
