@@ -57,3 +57,33 @@ export function getLikelihood() {
   });
   return likelihoodMap;
 }
+
+export function getRelevance() {
+  const relevanceMap = new Map();
+
+  relevanceMap.set("1", []);
+  relevanceMap.set("2", []);
+  relevanceMap.set("3", []);
+  relevanceMap.set("4", []);
+  relevanceMap.set("5", []);
+  relevanceMap.set("6orAbove", []);
+
+  data[0].forEach((element) => {
+    if (element.relevance !== "") {
+      if (element.relevance === 1) {
+        relevanceMap.get("1").push(element);
+      } else if (element.relevance === 2) {
+        relevanceMap.get("2").push(element);
+      } else if (element.relevance === 3) {
+        relevanceMap.get("3").push(element);
+      } else if (element.relevance === 4) {
+        relevanceMap.get("4").push(element);
+      } else if (element.relevance === 5) {
+        relevanceMap.get("5").push(element);
+      } else {
+        relevanceMap.get("6orAbove").push(element);
+      }
+    }
+  });
+  return relevanceMap;
+}
