@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import {
   getCountryWiseDistribution,
   getData,
+  getFieldWiseDistribution,
   getIntensity,
   getLikelihood,
   getRegionWiseDistribution,
@@ -19,6 +20,7 @@ const SampleData = () => {
   const topicMap = getTopicWiseDistribution();
   const regionMap = getRegionWiseDistribution();
   const sectorMap = getSectorWiseDistribution();
+  const dataMap = getFieldWiseDistribution("pestle");
   useEffect(() => {
     console.log("Whole data", data[0][0]);
     console.log("Intensity Map", intensityMap);
@@ -27,7 +29,8 @@ const SampleData = () => {
     console.log("Countries Map", countriesMap);
     console.log("Topic map", topicMap);
     console.log("Region map", regionMap);
-    console.log("Sector Map", sectorMap);
+    console.log("Sector map", sectorMap);
+    console.log("Data map", dataMap);
   }, [
     data,
     intensityMap,
@@ -37,6 +40,7 @@ const SampleData = () => {
     topicMap,
     regionMap,
     sectorMap,
+    dataMap,
   ]);
   return (
     <div>

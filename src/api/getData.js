@@ -135,6 +135,18 @@ export function getSectorWiseDistribution() {
   return sectorMap;
 }
 
+export function getFieldWiseDistribution(field) {
+  const fieldMap = new Map();
+  data[0].forEach((element) => {
+    if (!fieldMap.has(element[field]?.toLocaleLowerCase())) {
+      fieldMap.set(element[field]?.toLocaleLowerCase(), [element]);
+    } else {
+      fieldMap.get(element[field]?.toLocaleLowerCase()).push(element);
+    }
+  });
+  return fieldMap;
+}
+
 function getCountriesMap() {
   const countriesMap = new Map();
   countries.forEach((country) => {
